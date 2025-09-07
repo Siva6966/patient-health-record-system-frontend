@@ -4,7 +4,13 @@ import './styles.css';
 
 function App(){
   const [patients,setPatients]=useState([]);
-  const [doctors,setDoctors]=useState([]);
+  const [doctors, setDoctors] = useState([]);
+useEffect(() => {
+  fetch('/api/doctors')
+    .then(res => res.json())
+    .then(setDoctors);
+}, []);
+
   const [selectedPatient,setSelectedPatient]=useState(null);
   const [selectedDoctor,setSelectedDoctor]=useState(null);
   const [appointmentAt,setAppointmentAt]=useState('');
